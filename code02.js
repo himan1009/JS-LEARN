@@ -16,7 +16,7 @@ let isLoggedIn=false
 // boolean = true/false
 // null = standalone value (ye undefined nhi h khali h)
 // undefined
-// symbol
+// symbol = unique
 // object
 
 console.log(typeof "himan");
