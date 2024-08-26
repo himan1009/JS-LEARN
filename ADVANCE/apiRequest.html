@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API</title>
+  </head>
+  <body>
+    <p>
+      UNSENT(0): The XMLHttpRequest object has been created, but the open()
+      method hasn’t been called yet.
+      <br />
+      Explanation: This is the initial state right after creating the
+      XMLHttpRequest object.
+      <br />
+      <br />
+      OPENED (1): The open() method has been called, establishing the
+      connection, but the request hasn’t been sent yet.
+      <br />
+      Explanation: At this point, you can set request headers, but the request
+      is not yet sent.
+      <br />
+      <br />
+      HEADERS_RECEIVED (2): The send() method has been called, and the response
+      headers are available. The status and headers of the request are now
+      accessible.
+      <br />
+      Explanation: The server has received the request and is starting to send
+      back the response, typically including HTTP status code and headers.
+      <br />
+      <br />
+      LOADING (3): The response body is being received. The response data is
+      being downloaded, but it’s not complete yet.
+      <br />
+      Explanation: The response is still coming in from the server, and data is
+      being received in chunks.
+      <br />
+      <br />
+      DONE (4): The request has been completed, and the entire response is
+      received. At this point, the operation is complete whether the request was
+      successful or not.
+      <br />
+      Explanation: This state means the entire response is available, and the
+      request is over.>
+    </p>
+  </body>
+  <script>
+    const reqUrl='https://api.github.com/users/himan1009'
+        const xhr=new XMLHttpRequest();
+        xhr.open('GET', reqUrl)
+        xhr.onreadystatechange=function(){
+            console.log(xhr.readyState);
+            if(xhr.readyState===4){
+                const data=JSON.parse(this.responseText);
+                console.log(data.followers);
+            }
+        }
+        xhr.send()
+  </script>
+</html>
